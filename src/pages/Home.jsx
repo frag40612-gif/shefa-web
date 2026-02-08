@@ -1,9 +1,11 @@
+import ScrollReveal from '../components/ScrollReveal'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Header from '../components/Header'
 import SpecialityMenu from '../components/SpecialityMenu'
 import TopDoctors from '../components/TopDoctors'
+import DiseasesByLetter from '../components/DiseasesByLetter'
 import { assets } from '../assets/assets'
 import doc3 from '../assets/doc3.png'
 import doc8 from '../assets/doc8.png'
@@ -36,6 +38,7 @@ const Home = () => {
       <Header />
 
       {/* لماذا شفاء؟ Section */}
+      <ScrollReveal>
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-slate-50/50" />
@@ -100,6 +103,7 @@ const Home = () => {
                 description: 'خدمات رعاية صحية بباقات اشتراك مختلفة تناسب احتياجاتك وميزانيتك.'
               }
             ].map((feature, index) => (
+              <ScrollReveal delay={index * 0.12}>
               <div
                 key={index}
                 className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent hover:-translate-y-2"
@@ -132,6 +136,7 @@ const Home = () => {
                 {/* Hover effect overlay */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`} />
               </div>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -146,8 +151,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* من نحن - مقتبس من صفحة About */}
+      <ScrollReveal variant="up">
       <section className="py-16 bg-slate-50" style={{ direction: 'rtl' }}>
         <div className="max-w-6xl mx-auto px-4">
           {/* Hero */}
@@ -227,16 +234,25 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
+      <ScrollReveal variant="up">
       <div className="py-12">
         <SpecialityMenu />
       </div>
+      </ScrollReveal>
 
+      <ScrollReveal variant="up">
       <div className="py-4">
         <TopDoctors />
       </div>
+      </ScrollReveal>
+
+      {/* بحث الأمراض بالحرف الأول */}
+      <DiseasesByLetter />
 
       {/* آراء المستخدمين */}
+      <ScrollReveal variant="up">
       <section
         className="py-16 bg-gradient-to-br from-slate-50 via-white to-blue-50/40 relative overflow-hidden"
         style={{ direction: 'rtl' }}
@@ -317,8 +333,8 @@ const Home = () => {
                 avatar: person3
               }
             ].map((item, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1} variant="up">
               <article
-                key={idx}
                 className="rounded-3xl bg-white/80 backdrop-blur shadow-lg border border-slate-200/70 p-7 hover:-translate-y-1 hover:shadow-xl transition duration-300"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -360,12 +376,15 @@ const Home = () => {
                   <p className="text-gray-800 text-lg leading-relaxed pr-8">“{item.quote}”</p>
                 </div>
               </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Smart Watch Health Monitoring Section */}
+      <ScrollReveal variant="up">
       <div className="bg-gradient-to-r from-[#1D5E78] to-[#0b304a] text-white py-16 my-10 rounded-2xl mx-4 md:mx-10">
         <div className="max-w-6xl mx-auto px-4" style={{ direction: 'rtl' }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -428,6 +447,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </ScrollReveal>
 
       {/* Floating Chat Container */}
       <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
